@@ -43,7 +43,7 @@ public class Utils {
 		outputStream = new PrintWriter(targetFileName);	
 			
 		} catch (FileNotFoundException e) {
-			System.out.println("The file path does not exist. Please check your CLI argument!/!!");
+			System.out.println("The file path does not exist. Please check your CLI argument!");
 			System.exit(0);
 		}
 		
