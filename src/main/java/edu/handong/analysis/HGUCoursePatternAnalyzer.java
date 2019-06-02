@@ -90,22 +90,26 @@ public class HGUCoursePatternAnalyzer{
 
 					if(student.studentsTakenCheck(courseCode, yearAndSemester)) {
 						studentsTaken++; 
-
-						courseName = student.getCourseName(courseCode);
-
 					}
+					
+					courseName = student.getCourseName(courseCode);
 
 					if(student.totalStudentsCheck(yearAndSemester)) totalStudents++;
+					rate = (float)studentsTaken / (float)totalStudents * 100.0;;
+					
 
 
 				}
 
 				rate = (float)studentsTaken / (float)totalStudents * 100.0;;
 
-				line = year + ","+ semester + "," + courseCode + "," + courseName+ "," +  totalStudents+ "," + studentsTaken + "," + String.format("%.1f", rate) + "%";
+				line = year + ","+ semester + "," + courseCode + "," + courseName + "," +  totalStudents+ "," + studentsTaken + "," + String.format("%.1f", rate) + "%";
+				//System.out.println(line);
+				
 				result.add(line);
 				studentsTaken=0;
 				totalStudents = 0;
+				
 			}
 		}
 		
