@@ -102,12 +102,10 @@ public class HGUCoursePatternAnalyzer{
 
 				rate = (float)studentsTaken / (float)totalStudents * 100.0;;
 
-				//if(studentsTaken != 0)	{
-					line = year + ","+ semester + "," + courseCode + "," + courseName+ "," +  totalStudents+ "," + studentsTaken + "," + String.format("%.1f", rate) + "%";
-					result.add(line);
-					studentsTaken=0;
-					totalStudents = 0;
-				//}
+				line = year + ","+ semester + "," + courseCode + "," + courseName+ "," +  totalStudents+ "," + studentsTaken + "," + String.format("%.1f", rate) + "%";
+				result.add(line);
+				studentsTaken=0;
+				totalStudents = 0;
 			}
 		}
 		
