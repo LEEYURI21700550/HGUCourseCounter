@@ -11,18 +11,31 @@ public class Course {
 	private int yearTaken;
 	private int semesterCourseTaken;
 	
-	public Course(String line){
-		String[] data = line.split(",");
-		
-		studentId = (data[0].trim());
-		yearMonthGraduated = data[1].trim();
-		firstMajor = data[2].trim();
-		secondMajor = data[3].trim();
-		courseCode = data[4].trim();
-		courseName = data[5].trim();
-		courseCredit = data[6].trim();
-		yearTaken = Integer.parseInt(data[7].trim());
-		semesterCourseTaken = Integer.parseInt(data[8].trim());
+	public Course(String[] line){
+		studentId = (line[0].trim());
+		yearMonthGraduated = line[1].trim();
+		firstMajor = line[2].trim();
+		secondMajor = line[3].trim();
+		courseCode = line[4].trim();
+		courseName = line[5].trim();
+		courseCredit = line[6].trim();
+		yearTaken = Integer.parseInt(line[7].trim());
+		semesterCourseTaken = Integer.parseInt(line[8].trim());
+	}
+	
+	public String getCourseCode()
+	{
+		return courseCode;
+	}
+	
+	public String getcourseName()
+	{
+		return courseName;
+	}
+	
+	public String getYearAndSemester()
+	{
+		return yearTaken + "-" + semesterCourseTaken;
 	}
 	
 	public int getSemesterCourseTaken()

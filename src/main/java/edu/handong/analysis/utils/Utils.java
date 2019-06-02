@@ -2,33 +2,47 @@ package edu.handong.analysis.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import au.com.bytecode.opencsv.CSVReader;
 
 
 
 public class Utils {
 
-	public static ArrayList<String> getLines(String file,boolean removeHeader)
+	public static ArrayList<String[]> getLines(String file,boolean removeHeader) throws IOException
 	{
-		ArrayList<String> lines = new ArrayList<String>();
+		ArrayList<String[]> csv = new ArrayList<String[]>();
+
 		try {
-				Scanner inputStream = new Scanner(new File(file));
-				if(removeHeader) inputStream.nextLine();
-				
-				while(inputStream.hasNextLine())
-				{
-					lines.add(inputStream.nextLine());
-				}
-				inputStream.close();
-										
+			CSVReader reader = new CSVReader(new FileReader(file));
+			String [] line;
+			
+			if(removeHeader) reader.readNext();
+			
+			while ((line = reader.readNext()) != null) {
+				csv.add(line);
+			}
+
 		} catch(FileNotFoundException e) {
 			System.out.println("The file path does not exist. Please check your CLI argument!");
 			System.exit(0);
-		}		
-		return lines;
+		}
+	
+		
+
+		return csv;
+
+
 	}
+	
+	
+	
+	
 	public static void writeAFile(ArrayList<String> lines, String targetFileName)
 	{
 		
