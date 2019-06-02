@@ -13,6 +13,9 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -44,7 +47,7 @@ public class HGUCoursePatternAnalyzer{
 			}
 
 
-			ArrayList<String[]> lines = Utils.getLines(inputPath, true);
+			CSVParser lines = Utils.getLines(inputPath, true);
 			students = loadStudentCourseRecords(lines);
 
 			Map<String, Student> sortedStudents = new TreeMap<String,Student>(students);
@@ -199,11 +202,11 @@ public class HGUCoursePatternAnalyzer{
 	 * @param lines
 	 * @return
 	 */
-	private HashMap<String,Student> loadStudentCourseRecords(ArrayList<String[]> lines) {		
+	private HashMap<String,Student> loadStudentCourseRecords(CSVParser lines) {		
 		// TODO: Implement this method
 		HashMap<String,Student> studentData = new HashMap<String,Student>();
 
-		for(String[] line : lines)
+		for(CSVRecord line : lines)
 		{
 			Course course = new Course(line);
 			Student student = new Student(course.getStudentId());
